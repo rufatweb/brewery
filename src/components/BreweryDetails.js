@@ -1,13 +1,15 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-class BrewryDetails extends React.Component {
+const BreweryDetails = (props) => {
 
-  render () {
-    return <div className='brewery-details'>
-       Details
+  return (
+
+     <div className='brewery-details'>
+       Detailsssss
     </div>
-  }
+  )
+
 }
 
-export default BrewryDetails;
+export default BreweryDetails;
