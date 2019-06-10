@@ -9,7 +9,8 @@ class BrewryListContainer extends React.Component {
 
   state = {
     breweries: [],
-    selectedBrewery: ''
+    selectedBrewery: '',
+    backBtnClicked: false
   }
 
 
@@ -19,14 +20,18 @@ class BrewryListContainer extends React.Component {
   .then(json => this.setState({breweries: json}))
   }
 
-  handleClick = (selectedBrewery) => {
-    this.setState({selectedBrewery})
+  handleClick = (brewery) => {
+    this.setState({selectedBrewery: brewery, backBtnClicked: !this.state.backBtnClicked})
+  }
+
+  handleClickBack = () => {
+    this.setState({backBtnClicked: !this.state.backBtnClicked})
   }
 
   render () {
     return (
     <div className='brewery-list-container'>
-      {(this.state.selectedBrewery) ? <BreweryDetails brewery={this.state.selectedBrewery}/> : <BreweryList handleClick={this.handleClick} breweries={this.state.breweries}/>}
+      {(this.state.selectedBrewery && !this.state.backBtnClicked) ? <BreweryDetails handleClickBack={this.handleClickBack} brewery={this.state.selectedBrewery}/> : <BreweryList handleClick={this.handleClick} breweries={this.state.breweries}/>}
     </div>
   )
   }

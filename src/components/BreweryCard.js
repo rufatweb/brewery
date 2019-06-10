@@ -14,7 +14,8 @@ const useStyles = makeStyles({
     fontSize: 14,
   },
   root: {
-        justifyContent: 'center'
+        justifyContent: 'center',
+
     }
 
 });
