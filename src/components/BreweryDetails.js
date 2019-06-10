@@ -9,6 +9,7 @@ const style = {
   height: '50%',
 }
 
+const API_KEY = process.env.REACT_APP_GOOGLE_API_KEY;
 
 const BreweryDetails = (props) => {
 
@@ -39,5 +40,5 @@ const url = props.brewery.website_url
 }
 
 export default GoogleApiWrapper({
-  apiKey: ('AIzaSyBW5HcovXrhEhRczJiucXzRh3oHuIMR7SQ')
+  apiKey: API_KEY
 })(BreweryDetails)
