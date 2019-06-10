@@ -9,7 +9,11 @@ const style = {
   height: '50%',
 }
 
+<<<<<<< HEAD
 const API_KEY = process.env.REACT_APP_GOOGLE_API_KEY;
+=======
+const API_KEY = process.env.REACT_APP_GOOGLE_API_KEY
+>>>>>>> 0e85d180247627c57b4d4deb23a28a2d872dc3cf
 
 const BreweryDetails = (props) => {
 
@@ -28,7 +32,8 @@ const url = props.brewery.website_url
         <Link href={url} >{props.brewery.website_url}</Link>
       </Typography>
 
-    <Map style={style} google={props.google} zoom={12}
+    <Map
+    style={style} google={props.google} zoom={12}
     initialCenter={{lat: props.brewery.latitude, lng: props.brewery.longitude}}>
 
         <Marker />

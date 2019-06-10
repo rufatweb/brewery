@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import BreweryListContainer from './containers/BreweryListContainer'
-
+require('dotenv').config()
 
 function App() {
   return (
