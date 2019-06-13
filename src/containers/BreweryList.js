@@ -1,18 +1,25 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
 import BreweryCard from '../components/BreweryCard'
+import {Grid} from '@material-ui/core';
+
+
+
 
 
 class BreweryList extends React.Component {
 
+
+
   listBreweries = () => {
-    return this.props.breweries.map(brewery => <BreweryCard handleClick={this.props.handleClick} key={brewery.id} brewery={brewery}/>)
+    return this.props.breweries.map(brewery => <Grid key={brewery.id} item xs={4}><BreweryCard handleClick={this.props.handleClick}  brewery={brewery}/></Grid>)
   }
 
   render () {
-    
-    return <div className='brewery-list'>
+
+    return <div>
+    <Grid container spacing={5}>
       {this.listBreweries()}
+      </Grid>
     </div>
   }
 }

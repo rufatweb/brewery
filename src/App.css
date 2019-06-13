@@ -31,3 +31,13 @@
     transform: rotate(360deg);
   }
 }
+
+.brewery-list-container {
+    padding-top: 30px;
+    padding-left: 50px;
+    padding-right: 60px;
+    background-color: #fce2bf;
+}
+html {
+    background-color: #fce2bf;
+}

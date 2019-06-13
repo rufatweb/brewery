@@ -1,12 +1,22 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
-import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
-import { makeStyles } from '@material-ui/core/styles';
-import { Typography, Link, Button } from '@material-ui/core';
+import {Map, Marker, GoogleApiWrapper} from 'google-maps-react';
+import { Typography, Button, Icon} from '@material-ui/core';
+import {Link} from 'react-router-dom'
+
+
+ const formatPhoneNumber = (phoneNumberString) => {
+  var cleaned = ('' + phoneNumberString).replace(/\D/g, '')
+  var match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/)
+  if (match) {
+    return '(' + match[1] + ') ' + match[2] + '-' + match[3]
+  }
+  return null
+}
 
 const style = {
-  width: '100%',
+  width: '90%',
   height: '50%',
+
 }
 
 const API_KEY = process.env.REACT_APP_GOOGLE_API_KEY
@@ -15,22 +25,22 @@ const BreweryDetails = (props) => {
 
 const url = props.brewery.website_url
 
-    console.log(props)
     return (
       <div className='brewery-details'>
 
-      <Typography variant="caption">
+      <Typography variant="h1" >
         {props.brewery.name}
-      </Typography>
-      <Typography variant="body2" component="p" >
+      </Typography><br/>
+      <Typography variant="h2" >
         {props.brewery.street}, {props.brewery.city}, {props.brewery.postal_code}
-      </Typography>
+      </Typography><br/>
       <Typography variant="body2" component="p">
-        <Link href={url} >{props.brewery.website_url}</Link>
-      </Typography>
-    <Button onClick={props.handleClickBack} size="small">Go Back</Button>
+        <a href={url} >{props.brewery.website_url}</a>
+      </Typography><br/>
+    <Typography variant="body2"><Icon style={{ fontSize: 8 }}>phone</Icon> <Link>{formatPhoneNumber(props.brewery.phone)}</Link></Typography><br/>
+    <Link style={{ textDecoration: 'none' }} to='/breweries'><Button onClick={props.handleClickBack} size="large"><Icon>navigate_before</Icon>Go Back</Button><br/><br/></Link>
     <Map
-    style={style} google={props.google} zoom={12}
+    style={style} google={props.google} zoom={17}
     initialCenter={{lat: props.brewery.latitude, lng: props.brewery.longitude}}>
 
         <Marker />

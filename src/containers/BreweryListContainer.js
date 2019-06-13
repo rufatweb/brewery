@@ -1,16 +1,14 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
 import BreweryList from '../containers/BreweryList'
 import BreweryDetails from '../components/BreweryDetails'
-import {Route, Switch} from 'react-router-dom'
-
+import {Typography, Icon} from '@material-ui/core';
 
 class BrewryListContainer extends React.Component {
 
   state = {
     breweries: [],
     selectedBrewery: '',
-    backBtnClicked: false
+    backBtnClicked: ''
   }
 
 
@@ -25,13 +23,16 @@ class BrewryListContainer extends React.Component {
   }
 
   handleClickBack = () => {
-    this.setState({backBtnClicked: !this.state.backBtnClicked})
+    this.setState({backBtnClicked: !this.state.backBtnClicked, selectedBrewery: !this.state.selectedBrewery })
   }
 
   render () {
     return (
     <div className='brewery-list-container'>
-      {(this.state.selectedBrewery && !this.state.backBtnClicked) ? <BreweryDetails handleClickBack={this.handleClickBack} brewery={this.state.selectedBrewery}/> : <BreweryList handleClick={this.handleClick} breweries={this.state.breweries}/>}
+    <Typography variant="h1" >
+      Breweries in Harrisburg <Icon style={{ fontSize: 8 }}>beer</Icon>
+    </Typography><br/>
+      {(this.state.selectedBrewery) ? <BreweryDetails handleClickBack={this.handleClickBack} brewery={this.state.selectedBrewery}/> : <BreweryList handleClick={this.handleClick} breweries={this.state.breweries}/>}
     </div>
   )
   }
